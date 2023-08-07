@@ -1,0 +1,27 @@
+# terraform.tfvars
+project = "nifty-altar-394805"
+region = "us-east4"
+network_name = "task1-vpc"
+subnet_name = "task1-subnet"
+subnet_ip_cidr_range = "10.0.0.0/16"
+cluster_name = "gke-cluster"
+node_count = 2
+machine_type = "e2-medium"
+oauth_scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+node_pool_name = "cluster-nodepool"
+enable_private_nodes = true
+enable_private_endpoint = true
+master_ipv4_cidr_block = "10.13.0.0/28"
+cluster_ipv4_cidr_block = "10.11.0.0/21"
+services_ipv4_cidr_block = "10.12.0.0/21"
+disk_size_gb =  "10"
+router       =  "nat-router"
+nat          =  "nat-config"
+repository_id =  "my-repository"
+instance_name = "jump-host"
+image         = "rhel-cloud/rhel-9"
+firewall      = "allow-ssh"
+protocol      = "tcp"
+ports         = "22"
+source_ranges = "0.0.0.0/0"
+account_id    =  "github-actions-workflow"
