@@ -1,8 +1,7 @@
 resource "google_compute_instance" "rhel_instance" {
   name         = var.instance
   machine_type = var.machine_type
-  zone         = var.cluster_location 
-  tags         = [var.image]
+  zone         = var.zone 
  
   boot_disk {
     initialize_params {
@@ -11,8 +10,8 @@ resource "google_compute_instance" "rhel_instance" {
   }
 
   network_interface {
-    network = var.vpc
-   subnetwork        = var.subnet
+    network = var.network
+   subnetwork        = var.subnetwork
     access_config {
     }
   }

@@ -1,4 +1,4 @@
 variable "project" {}
-variable "region" {}
+variable "location" {}
 variable "repository_id" {}
 

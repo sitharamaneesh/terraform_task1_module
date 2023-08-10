@@ -1,4 +1,7 @@
-variable "instance_name" { }
+variable "instance" { }
 variable "machine_type" { }
-variable "cluster_location" { }
+variable "zone"  {}
 variable "image" {}
+variable "network" {}
+variable "subnetwork" {}
+

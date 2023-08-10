@@ -7,7 +7,7 @@ variable "region" {
   description = "The region in which resources will be created"
   type = string
 }
-
+variable "location" {}
 variable "network_name" {
   description = "The name of the network"
   type = string
@@ -75,20 +75,12 @@ variable "services_ipv4_cidr_block" {
   type = string
 }
 
-variable "router" {
-  description = "The router name"
-  type        = string
-}
-variable "nat" {
-  description = "The nat name"
-  type        = string
-}
 variable "repository_id" {}
-
-variable "instance_name" {}
+variable "zone" {}
+variable "instance" {}
 variable "image" {}
-variable "firewall" {}
+variable "name" {}
 variable "protocol" {}
 variable "ports" {}
 variable "source_ranges" {}
-
+variable "account_id" {}

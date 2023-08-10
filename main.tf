@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "../modules/vpc"
+  source = "./modules/vpc"
   project = var.project
   region = var.region
   network_name = var.network_name
@@ -10,7 +10,7 @@ module "vpc" {
 }
 
 module "gke" {
-  source = "../modules/gke"
+  source = "./modules/gke"
   project = var.project
   region = var.region
   cluster_name = var.cluster_name
@@ -28,38 +28,28 @@ module "gke" {
   disk_size_gb = var.disk_size_gb
 }
 
-module "cloud-nat" {
-  source     = "terraform-google-modules/cloud-nat/google"
-  version    = "~> 1.2"
-  project_id = var.project
-  region     = var.region
-  router     = module.nat.name
-  name       = var.nat
-
-}
 
 module "artifact_registry" {
-  source        = "../modules/artifact_registry"
+  source        = "./modules/artifact_registry"
   project       = var.project
-  location      = var.region
+  location      = var.location
   repository_id = var.repository_id
 }
 
 module "instance" {
-  source       = "../modules/instance" {
-  name         = var.insatnce
+  source       = "./modules/instance" 
+  instance        = var.instance
   machine_type = var.machine_type
-  zone         = var.cluster_location
-  tags         = var.image
+  zone         = var.zone
   image        = var.image
   network      = module.vpc.network_name
   subnetwork   = module.vpc.subnet_name
 }
 
 module "firewall" {
-  source       = "../modules/firewall"
+  source       = "./modules/firewall"
   project      = var.project  
-  name         = var.firewall
+  name         = var.name
   network      = module.vpc.network_name
   protocol     = var.protocol
   ports        = var.ports
@@ -67,7 +57,7 @@ module "firewall" {
 }
   
 module "service_account" {
-  source       =  "../modules/service_account"
+  source       =  "./modules/service_account"
   account_id   = var.account_id
   project      = var.project
 }
